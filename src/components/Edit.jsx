@@ -19,6 +19,22 @@ function Edit() {
         return e.id
     }).indexOf(id);
 
+    const handleSubmit =(e) => {
+        e.preventDefault();
+
+        let a = Meetings[index];
+        a.Title = title;
+        a.Time = time;
+
+        history('/')
+    }
+
+    useEffect(() => {
+        setTitle(localStorage.getItem('Title'))
+        setTime(localStorage.getItem('Time'))
+        setId(localStorage.getItem('id'))
+    },[])
+
     return (
         <div>
             <Form className='d-grid gap-2' style={{margin:'15rem'}}>

@@ -14,7 +14,6 @@ function Home() {
         }).indexOf(id);
 
         Meetings.splice(index,1);
-
         history('/');
     }
 

@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Meetings from './Meetings';
 import {Link, useNavigate} from 'react-router-dom';
 
+
 function Home() {
     let history = useNavigate();
 
@@ -49,7 +50,9 @@ function Home() {
                                             {item.Time}
                                         </td>
                                         <td>
-                                            <Button onClick={() => alert(item.id)}>EDIT</Button>
+                                            <Link to={'/edit'}>
+                                                <Button onClick={() => alert(item.id)}>EDIT</Button>
+                                            </Link>
                                             &nbsp;
                                             <Button onClick={() => handleDelete(item.id)}>DELETE</Button>
                                         </td>
@@ -60,6 +63,10 @@ function Home() {
                         }
                     </tbody>
                 </Table>
+                <br></br>
+                <Link className='d-grid gap-2' to='/create'>
+                    <Button size='lg'>Create</Button>
+                </Link>
             </div>
         </div>
     )

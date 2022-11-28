@@ -2,13 +2,19 @@ import React from 'react';
 import {Button, Table} from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Meetings from './Meetings';
+import {Link, useNavigate} from 'react-router-dom';
 
 function Home() {
+    let history = useNavigate();
 
     const handleDelete = (id) => {
         let index = Meetings.map(function(e){
             return e.id
-        })
+        }).indexOf(id);
+
+        Meetings.splice(index,1);
+
+        history('/');
     }
 
     return (

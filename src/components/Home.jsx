@@ -8,10 +8,12 @@ import {Link, useNavigate} from 'react-router-dom';
 function Home() {
     let history = useNavigate();
 
-    const handleEdit = (id, time, title) => {
-        localStorage.setItem('Title', title);
-        localStorage.setItem('Time', time);
+    const handleEdit = (id, title, description, time) => {
         localStorage.setItem('Id', id);
+        localStorage.setItem('Title', title);
+        localStorage.setItem('Description', description);
+        localStorage.setItem('Time', time);
+        
     }
 
     const handleDelete = (id) => {
@@ -31,6 +33,9 @@ function Home() {
                         <tr>
                             <th>
                                 Title
+                            </th>
+                            <th>
+                                Description
                             </th>
 
                             <th>
@@ -52,11 +57,14 @@ function Home() {
                                             {item.Title}
                                         </td>
                                         <td>
+                                            {item.Description}
+                                        </td>
+                                        <td>
                                             {item.Time}
                                         </td>
                                         <td>
                                             <Link to={'/edit'}>
-                                                <Button onClick={() => handleEdit(item.id, item.Title, item.Time)}>EDIT</Button>
+                                                <Button onClick={() => handleEdit(item.id, item.Title, item.Description, item.Time)}>EDIT</Button>
                                             </Link>
                                             &nbsp;
                                             <Button onClick={() => handleDelete(item.id)}>DELETE</Button>
